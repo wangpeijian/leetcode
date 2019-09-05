@@ -5,30 +5,30 @@
 public class N1_two_sum {
 
     public static void main(String[] args) {
-        Solution1 solution = new Solution1();
         int[] a = {2, 7, 11, 15};
-        System.out.println(solution.twoSum(a, 9));
+        System.out.println(new Solution().twoSum(a, 9));
     }
 
-}
+    static class Solution {
 
-class Solution1 {
+        public int[] twoSum(int[] nums, int target) {
 
-    public int[] twoSum(int[] nums, int target) {
+            for (int i = 0; i < nums.length; i++) {
 
-        for (int i = 0; i < nums.length; i++) {
+                for (int j = i + 1; j < nums.length; j++) {
 
-            for (int j = i + 1; j < nums.length; j++) {
+                    if (nums[j] + nums[i] == target) {
+                        return new int[]{j, i};
+                    }
 
-                if (nums[j] + nums[i] == target) {
-                    return new int[]{j, i};
                 }
 
             }
 
+            return null;
         }
 
-        return null;
     }
-
 }
+
+

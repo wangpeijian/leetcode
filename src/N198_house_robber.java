@@ -5,33 +5,47 @@
 public class N198_house_robber {
 
     public static void main(String[] args) {
-        Solution198 solution = new Solution198();
-        int[] a = {2, 7, 9, 99, 1, 1, 1};
-        System.out.println(solution.rob(a));
+        int[] a = {2, 7, 9, 3, 1};
+        System.out.println(new Solution().rob(a));
     }
 
-}
+    static class Solution {
 
-class Solution198 {
+        private int[] nums;
 
+        private int[] mk;
 
-    public int rob(int[] nums) {
+        public int rob(int[] nums) {
+            this.nums = nums;
+            this.mk = new int[nums.length];
 
+            int sum = 0;
 
-        int prevMax = 0;
-        int currMax = 0;
+            for (int i = 0; i < nums.length; i++) {
 
-        for (int num : nums) {
+                sum = getN(i);
 
-            int temp = currMax;
-            currMax = Math.max(prevMax + num, currMax);
-            prevMax = temp;
+            }
 
-
+            return sum;
         }
 
-        return currMax;
+        private int getN(int i) {
+
+            if (i < 0) {
+                return 0;
+            }
+
+            if (mk[i] != 0) {
+                return mk[i];
+            }
+
+            mk[i] = Math.max(getN(i - 1), nums[i] + getN(i - 2));
+
+            return mk[i];
+        }
+
     }
-
-
 }
+
+
