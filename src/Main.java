@@ -1,3 +1,10 @@
+import java.lang.reflect.Proxy;
+import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author wangpejian
  * @date 19-9-9 下午1:58
@@ -8,6 +15,29 @@ public class Main {
 
 
         System.out.println(new Solution().Fibonacci(5));
+
+//        Map<String, String> map = new ConcurrentHashMap();
+//        map.put("1", "");
+
+        ThreadPoolExecutor tp = new ThreadPoolExecutor(0, 5, 10, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10));
+
+        tp.execute(() -> {
+            System.out.println("1");
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        tp.execute(() -> {
+            System.out.println("2");
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     static public class Solution {
