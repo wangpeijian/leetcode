@@ -3,7 +3,7 @@ package sort;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] a = {6, 1, 2, 6, 7, 9, 11, 4, 5, 10, 8};
+        int[] a = {6, 6,1, 2, 6, 7, 9, 11, 4, 5, 10, 8};
         new QuickSort.Solution().sortMe(a);
 
         for (int i : a) {
@@ -103,7 +103,7 @@ public class QuickSort {
 
             while (l < r) {
 
-                while (nums[r] > k && l < r) {
+                while (nums[r] >= k && l < r) {
                     r--;
                 }
 
