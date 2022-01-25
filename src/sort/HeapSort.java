@@ -22,7 +22,7 @@ public class HeapSort {
 
             // 1.先将堆调整为大顶堆
             for (int i = nums.length / 2 - 1; i >= 0; i--) {
-                adjust(nums, i, nums.length);
+                adjust(nums, i, end);
             }
 
             // 2.每次循环将堆顶元素与尾节点交换,交换后对堆顶到尾结点-1的数据重新调整为大顶堆
