@@ -51,7 +51,10 @@ class Solution {
 
 
     public List<Integer> getRow(int rowIndex) {
-        int[] arr = new int[rowIndex + 1];
+        Integer[] arr = new Integer[rowIndex + 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = 0;
+        }
 
         int i = 0;
         int tmp;
@@ -68,12 +71,7 @@ class Solution {
             i++;
         }
 
-        List<Integer> list = new ArrayList();
-        for (int value : arr) {
-            list.add(value);
-        }
-        return list;
+        return Arrays.asList(arr);
     }
-
 }
 //leetcode submit region end(Prohibit modification and deletion)
