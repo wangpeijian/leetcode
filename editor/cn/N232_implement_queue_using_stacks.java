@@ -66,28 +66,31 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class MyQueue {
 
-    List<Integer> list = new ArrayList<>();
+    Deque<Integer> stack = new LinkedList<>();
 
+    /** Initialize your data structure here. */
     public MyQueue() {
 
     }
-    
+
+    /** Push element x to the back of queue. */
     public void push(int x) {
-        list.add(x);
+        stack.add(x);
     }
-    
+
+    /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        int top = list.get(0);
-        list.remove(0);
-        return top;
+        return stack.pop();
     }
-    
+
+    /** Get the front element. */
     public int peek() {
-        return list.get(0);
+        return stack.peek();
     }
-    
+
+    /** Returns whether the queue is empty. */
     public boolean empty() {
-        return list.size() == 0;
+        return stack.size() == 0;
     }
 }
 
