@@ -7,18 +7,44 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
  * }
  */
 class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
+        return deepSet(nums, 0, nums.length - 1);
+    }
 
+    private TreeNode deepSet(int[] nums, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        if (start == end) {
+            return new TreeNode(nums[start]);
+        }
+
+        // 找到中间节点
+        int center = (start + end) / 2;
+        TreeNode c = new TreeNode(nums[center]);
+
+        // 先左 后右设置子节点
+        if (start <= center - 1) {
+            c.left = deepSet(nums, start, center - 1);
+        }
+
+        if (center + 1 <= end) {
+            c.right = deepSet(nums, center + 1, end);
+        }
+
+        return c;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
