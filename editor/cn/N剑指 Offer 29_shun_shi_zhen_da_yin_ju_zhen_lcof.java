@@ -33,7 +33,67 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] spiralOrder(int[][] matrix) {
+        if (matrix.length == 0) {
+            return new int[]{};
+        }
 
+        int xl = matrix.length;
+        int yl = matrix[0].length;
+        int len = xl * yl;
+        int[] arr = new int[len];
+
+        int x = 0;
+        int y = 0;
+        int step = 0;
+
+        int xx = xl - 1;
+        int yx = yl - 1;
+        int xm = 1;
+        int ym = 0;
+
+        for (int i = 0; i < len; i++) {
+            arr[i] = matrix[x][y];
+            switch (step % 4) {
+                case 0:
+                    y++;
+                    if (y > yx) {
+                        yx--;
+                        y--;
+                        x++;
+                        step++;
+                    }
+                    break;
+                case 1:
+                    x++;
+                    if (x > xx) {
+                        xx--;
+                        x--;
+                        y--;
+                        step++;
+                    }
+                    break;
+                case 2:
+                    y--;
+                    if (y < ym) {
+                        ym++;
+                        y++;
+                        x--;
+                        step++;
+                    }
+                    break;
+                case 3:
+                    x--;
+                    if (x < xm) {
+                        xm++;
+                        x++;
+                        y++;
+                        step++;
+                    }
+                    break;
+            }
+        }
+
+        return arr;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
